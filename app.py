@@ -2,15 +2,9 @@ from flask import Flask, Blueprint, render_template
 
 app = Flask(__name__)
 
-views = Blueprint(__name__, "views")
-
-
-@views.route("/")
+@app.route("/")
 def home():
-    return render_template('index.html')
-
-app.register_blueprint(views, url_prefix="/")
-
+   return render_template('index.html')
 
 if __name__ == '__main__':
    app.run(debug=True, port=8000)
