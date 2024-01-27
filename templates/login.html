@@ -10,21 +10,28 @@
 
     <title>Firebase Auth</title>
   </head>
-  <body>
-    <form id="MainForm" class="w-25 m-4">
-        <h2 class="mb-3">Sign In User</h2>
-        <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="emailInp" placeholder="name@example.com">
-            <label for="floatingInput">Email address</label>
+  <body style="background: #377e7f">
+    <div class="d-flex aligns-items-center justify-content-center card w-75 position-absolute top-50 start-50 translate-middle">
+        <div class="card-header">
+            Enter Photo Journal Password
           </div>
-          <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="psswordInp" placeholder="Password">
-            <label for="floatingPassword">Password</label>
-          </div>
-
-          <button type="submit" class="btn btn-primary" style="float:right">Login</button>
-          <a href="register.html"><button type="button" class="btn btn-primary" style="float:right">Sign Up</button></a>
-    </form>
+        <div class="card-body">
+            <form id="MainForm">
+                <h2 class="mb-3">Enter your password for plotted memories.</h2>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="emailInp" placeholder="name@example.com">
+                    <label for="floatingInput">Email address</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="psswordInp" placeholder="Password">
+                    <label for="floatingPassword">Password</label>
+                  </div>
+        
+                  <button type="submit" class="btn btn-primary" style="float:right ">Login</button>
+                  <a href="register.html"><button type="button" class="btn btn-primary" style="float:right">Sign Up</button></a>
+            </form>
+        </div>
+      </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     
