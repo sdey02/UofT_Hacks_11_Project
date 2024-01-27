@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request, redirect, url_for
 
 views = Blueprint(__name__, "views")
 
@@ -14,6 +14,16 @@ def register():
 def login():
     return render_template('login.html')
 
-@views.route("/test")
-def test():
-    return render_template('temp.html')
+@views.route('/upload', methods=['POST'])
+def upload():
+    uploaded_file = request.files['file']
+    if uploaded_file.filename != '':
+        uploaded_file.save(uploaded_file.filename)
+    return redirect(url_for('index'))
+
+@views.route('/upload', methods=['POST'])
+def upload():
+    uploaded_file = request.files['file']
+    if uploaded_file.filename != '':
+        uploaded_file.save(uploaded_file.filename)
+    return redirect(url_for('index'))
