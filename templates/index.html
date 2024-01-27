@@ -4,22 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap');
+        body {
+          --bs-font-sans-serif: 'Fraunces', sans-serif;
+          --bs-body-font-family: var(--bs-font-sans-serif);
+        }
+      </style>
     <title>Home</title>
 </head>
 
-<body style="background: black">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-lg-0">
+<body style="background: #3B3B3B">
+    <nav class="navbar navbar-expand-lg mb-lg-0" style="background-color: #E5E5DD;">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Plotted Memories</a>
+          <a class="navbar-brand text-dark" href="#">Plotted Memories</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-            </ul>
+            <div class="navbar-nav me-auto mb-2 mb-lg-0">
+                <form class="d-flex mx-auto p-2">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">File</button>
+                </form>
+                <form class="d-flex mx-auto p-2">
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal_1">Edit</button>
+                </form>
+                <form class="d-flex mx-auto p-2">
+                    <button class="btn btn-outline-success" type="button">View</button>
+                </form>
+                <form class="d-flex mx-auto p-2">
+                  <button class="btn btn-outline-success" type="button">Image</button>
+                </form>
+                <form class="d-flex mx-auto p-2">
+                    <button class="btn btn-outline-success" type="button">Help</button>
+                </form>
+            </div>
             <form class="d-flex">
               <button class="btn btn-outline-success" type="button">Sign Out</button>
             </form>
@@ -27,14 +46,54 @@
         </div>
       </nav>
     <div>
-        <h1 class="text-primary">Home page</h1>
-    </div>
-    <div>
-        <h1>Upload New Image</h1>
+        <h1 class="text-[#B5B5B5]">Upload New Image</h1>
         <form method="POST" action="" enctype="multipart/form-data">
             <p><input type="file" name="file"></p>
             <p><input type="submit" value="Submit"></p>
         </form>
     </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        This is retarded as fuck
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal_1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          This is retarded as fuck _1
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
