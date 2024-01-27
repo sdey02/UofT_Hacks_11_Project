@@ -13,3 +13,7 @@ def register():
 @views.route("/login")
 def login():
     return render_template('login.html')
+
+@views.route("/test")
+def test():
+    return render_template('temp.html')
