@@ -20,10 +20,3 @@ def upload():
     if uploaded_file.filename != '':
         uploaded_file.save(uploaded_file.filename)
     return redirect(url_for('index'))
-
-@views.route('/upload', methods=['POST'])
-def upload():
-    uploaded_file = request.files['file']
-    if uploaded_file.filename != '':
-        uploaded_file.save(uploaded_file.filename)
-    return redirect(url_for('index'))
