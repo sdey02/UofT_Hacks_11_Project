@@ -20,3 +20,9 @@ def upload():
     if uploaded_file.filename != '':
         uploaded_file.save(uploaded_file.filename)
     return redirect(url_for('index'))
+
+@views.route('/', methods=['POST'])
+def save_text():
+    user_text = request.form['user_text']
+    # Save the text in a variable or perform any other operation with it
+    return "Text saved successfully!"
