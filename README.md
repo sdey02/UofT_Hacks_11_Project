@@ -2,7 +2,6 @@
 <a name="readme-top"></a>
 
 
-
 <!-- PROJECT SHIELDS -->
 <!--
 *** I'm using markdown "reference style" links for readability.
