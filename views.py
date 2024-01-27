@@ -9,3 +9,7 @@ def home():
 @views.route("/register")
 def register():
     return render_template('register.html')
+
+@views.route("/login")
+def login():
+    return render_template('login.html')
