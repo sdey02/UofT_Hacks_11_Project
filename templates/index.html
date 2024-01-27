@@ -14,8 +14,8 @@
     <title>Home</title>
 </head>
 
-<body style="background: #3B3B3B">
-    <nav class="navbar navbar-expand-lg mb-lg-0" style="background-color: #E5E5DD;">
+<body style="background: #ABABAB">
+    <nav class="navbar navbar-expand-lg mb-lg-0" style="background-color: #ADDAFA;">
         <div class="container-fluid">
           <a class="navbar-brand text-dark" href="#">Plotted Memories</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,19 +24,19 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="navbar-nav me-auto mb-2 mb-lg-0">
                 <form class="d-flex mx-auto p-2">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">File</button>
+                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"><u>F</u>ile</button>
                 </form>
                 <form class="d-flex mx-auto p-2">
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal_1">Edit</button>
+                  <button type="button" class="btn" data-bs-toggle="modal" data-bs-target=""><u>E</u>dit</button>
                 </form>
                 <form class="d-flex mx-auto p-2">
-                    <button class="btn btn-outline-success" type="button">View</button>
+                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="""><u>V</u>iew</button>
                 </form>
                 <form class="d-flex mx-auto p-2">
-                  <button class="btn btn-outline-success" type="button">Image</button>
+                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target=""><u>O</u>ptions</button>
                 </form>
                 <form class="d-flex mx-auto p-2">
-                    <button class="btn btn-outline-success" type="button">Help</button>
+                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal_1"><u>H</u>elp</button>
                 </form>
             </div>
             <form class="d-flex">
@@ -45,30 +45,21 @@
           </div>
         </div>
       </nav>
-    <div>
-        <h1 class="text-[#B5B5B5]">Upload New Image</h1>
-        <form method="POST" action="" enctype="multipart/form-data">
-            <p><input type="file" name="file"></p>
-            <p><input type="submit" value="Submit"></p>
-        </form>
-    </div>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <h5 class="modal-title" id="exampleModalLabel">Upload New Image</h5> 
       </div>
       <div class="modal-body">
-        This is retarded as fuck
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <div>
+            <form method="POST" action="" enctype="multipart/form-data">
+                <p><input type="file" name="file"></p>
+                <p><input type="submit" value="Submit"></p>
+            </form>
+        </div>
       </div>
     </div>
   </div>
@@ -78,17 +69,10 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+          <h5 class="modal-title" id="exampleModalLabel">What is Plotted memories?</h5>
         </div>
-        <div class="modal-body">
-          This is retarded as fuck _1
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+        <div clprogramass="modal-body">
+          This program is built to help you track where you have been by letting you upload photots and descriptions and then having the Cohere LLM generate short captions and summerized descriptions of your events so that you can look back on them.
         </div>
       </div>
     </div>
