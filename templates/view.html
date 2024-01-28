@@ -30,6 +30,7 @@
     <table border="1">
         <thead>
             <tr>
+                <th>ID</th>
                 <th>User ID</th>
                 <th>Image Base64</th>
                 <th>Caption</th>
@@ -40,6 +41,7 @@
         <tbody>
             {% for image in images %}
             <tr>
+                <td>{{ image.id }}</td>
                 <td>{{ image.user_id }}</td>
                 <td>{{ image.image_base64 }}</td>
                 <td>{{ image.caption }}</td>

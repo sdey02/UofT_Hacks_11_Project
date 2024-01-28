@@ -2,6 +2,7 @@ from flask import Flask, Blueprint, render_template, request, redirect, url_for,
 from datetime import timedelta
 from flask_sqlalchemy import SQLAlchemy
 from cohere_api import test
+import json
 
 app = Flask(__name__)
 app.secret_key = "hello"
@@ -28,9 +29,25 @@ class images(db.Model):
 
 @app.route("/home", methods = ['POST', 'GET'])
 def home():
+    if 'email' not in session:
+        flash('You need to login first')
+        return redirect('/login')
+    
+    user_email = session['email']
+    user = users.query.filter_by(email=user_email).first()
+    user_id=user.id
+    user_images = images.query.filter_by(user_id=user_id).all()
+    # serialized_images = [{'base64': img.image_base64,
+    #                                  'latitude': img.latitude,
+    #                                  'longitude': img.longitude,
+    #                                  'caption': img.caption} for img in user_images]
+    
+    # serialized_images = json.dumps(serialized_images)
+
+
     if request.method == 'GET':
         if "email" in session:
-            return render_template('index.html')
+            return render_template('index.html', user_images=user_images)
         
         else:
             flash("Please log in")
@@ -38,9 +55,7 @@ def home():
    
     if request.method == 'POST':
         array = []
-        user_email = session['email']
-        user = users.query.filter_by(email=user_email).first()
-        
+ 
         for type, id in request.form.items():
             array.append(id)
             print(array)
@@ -124,10 +139,16 @@ def logout():
 
 @app.route("/view")
 def view():
+    # if 'email' not in session:
+    #     flash('You need to login first')
+    #     return redirect('/login')
+    # user_email = session['email']
+    # user = users.query.filter_by(email=user_email).first()
+    # user_id=user.id
+    # user_images = images.query.filter_by(user_id=user_id).all()
     return render_template("view.html", users=users.query.all(), images=images.query.all())
 
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
     app.run(debug=True, port=8000)
-

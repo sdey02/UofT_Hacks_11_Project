@@ -77,3 +77,5 @@ def test(caption):
     longitude = location_geopy.longitude
 
     return [caption_data, latitude, longitude]
+
+# print(test("We visited the Grand Canyon today which is located in Arizona, USA and saw a mountain lion"))
