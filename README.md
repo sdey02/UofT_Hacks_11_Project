@@ -19,12 +19,12 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 -->
-<h3 align="center">CHIP-8 Emulator</h3>
+<h3 align="center">Photo Plotter</h3>
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-I am currently working on a C++ chip emulator.
+This project is what we came up for the nostolgia theme at UofT Hacks 11. The project allows users to upload a photo along with a short paragraph about what they did at that location. The photo is converted to base 64 Then using Cohere we parse the text to find the location and also generate a simple caption for the photo. The location is then passed to geopy to get the latitude and longitude which get sent a SQLAlchemy along with the 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
