@@ -98,12 +98,11 @@
     <div id="map"></div>
 
     <div>
-      <form>
-        <label for="image" method="post" enctype="multipart/form-data">Image</label>
-        <input type="file" name="image" id="fileuploadform">
-        <button>Submit</button>
+      <form id="uploadForm" action="/views" method='POST'>
+        <input type="text" id="captionInput">
+        <input type="file" id="fileInput" accept="image/*">
+        <button type="submit">Submit</button>
       </form>
-    </div>
   </body>
 </html>
 
@@ -115,57 +114,25 @@ crossorigin=""></script>
 integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
 crossorigin="anonymous"></script>
 
-<!-- <script type="text/javascript">
-  var uploadformid = "fileuploadform";
-  var uploadform = document.getElementById(uploadformid);
-
-  var file = $j(fileUpload.toString()).attr('files')[0];
-  var encoded = Btoa(file);
-
-  function uploadFileToServer(event) {
-    var file = event.srcElement.files[0];
-    console.log(file);
-    var reader = new FileReader();
-    reader.readAsBinaryString(file);
-
-    reader.onload = function() {
-        console.log(btoa(reader.result));
-    };
-    reader.onerror = function() {
-        console.log('there are some problems');
-    };
-  }
-</script> -->
-
 <script>
-  const input = document.getElementById("fileuploadform");
+  document.getElementById('uploadForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      var fileInput = document.getElementById('fileInput');
+      var file = fileInput.files[0];
+      var captionInput = document.getElementById('captionInput').value;
 
-  const convertBase64 = (file) => {
-      return new Promise((resolve, reject) => {
-          const fileReader = new FileReader();
-          fileReader.readAsDataURL(file);
-
-          fileReader.onload = () => {
-              resolve(fileReader.result);
-          };
-
-          fileReader.onerror = (error) => {
-              reject(error);
-          };
-      });
-  };
-
-  const uploadImage = async (event) => {
-      const file = event.target.files[0];
-      const base64 = await convertBase64(file);
-      avatar.src = base64;
-      textArea.innerText = base64;
-  };
-
-  input.addEventListener("change", (e) => {
-      uploadImage(e);
+      if (file) {
+          var reader = new FileReader();
+          reader.onload = function(event) {
+              var imageData = event.target.result;
+              document.getElementById('uploadForm').insertAdjacentHTML('beforeend', '<input type="hidden" name="imageData" value="' + imageData + '">');
+              document.getElementById('uploadForm').insertAdjacentHTML('beforeend', '<input type="hidden" name="captionInput" value="' + captionInput + '">')
+              document.getElementById('uploadForm').submit();
+          }
+          reader.readAsDataURL(file);
+      }
   });
-</script>
+  </script>
 
 <script>
     var map = L.map('map').setView([51.505, -0.09], 13);
@@ -180,4 +147,4 @@ crossorigin="anonymous"></script>
     var marker = L.marker([51.55, -0.095], {
         title: "New"
     }).addTo(map).bindPopup('<h1>New Marker</h1><p>Test 2 pic</p><img src = "../static/test.png" style="width: 300px">');
-</script>
+</script> 

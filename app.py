@@ -1,4 +1,4 @@
-from flask import Flask, Blueprint, render_template, request, redirect, url_for
+from flask import Flask
 from views import views
 
 app = Flask(__name__)

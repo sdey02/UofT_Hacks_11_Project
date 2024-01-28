@@ -3,3 +3,6 @@
 /newenv
 /__pycache__
 /virtual_environment
+.DS_Store
+static/test.png
+templates/test.html
