@@ -75,8 +75,4 @@ def test(caption):
     location_geopy = geolocator.geocode(location_data)
     latitude = location_geopy.latitude
     longitude = location_geopy.longitude
-
-print(latitude)
-print(longitude)
-
     return (latitude, longitude, caption_data)
