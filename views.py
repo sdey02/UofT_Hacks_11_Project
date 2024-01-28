@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+from cohere_api import test
 
 views = Blueprint(__name__, "views")
 
@@ -13,7 +14,15 @@ def home():
 
         for type, id in request.form.items():
             array.append(id)
-            print(array)
+            # print(array)
+            #Went to the beach in Miami Florida and saw a shark
+        
+        temp = test(array[1])
+        array.pop(1)
+        array.extend(temp)
+
+        print(array)
+
         return render_template('index.html')
 
 @views.route("/register")

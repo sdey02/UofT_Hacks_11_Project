@@ -67,15 +67,11 @@
       </div>
       <div class="modal-body">
         <div>
-            <form method="POST" action="" enctype="multipart/form-data">
-                <p><input type="file" name="file"></p>
-                <p><input type="submit" value="Submit"></p>
-            </form>
-
-            <form action="{{ url_for('views.save_text') }}" method="post">
-              <input type="text" name="user_text" placeholder="Enter your text here">
-              <input type="submit" value="Save Text">
-            </form>            
+          <form id="uploadForm" action="/views" method='POST'>
+            <input type="text" id="captionInput">
+            <input type="file" id="fileInput" accept="image/*">
+            <button type="submit">Submit</button>
+          </form>
         </div>
       </div>
     </div>
@@ -98,11 +94,6 @@
     <div id="map"></div>
 
     <div>
-      <form id="uploadForm" action="/views" method='POST'>
-        <input type="text" id="captionInput">
-        <input type="file" id="fileInput" accept="image/*">
-        <button type="submit">Submit</button>
-      </form>
   </body>
 </html>
 
