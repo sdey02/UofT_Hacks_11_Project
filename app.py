@@ -1,6 +1,7 @@
 from flask import Flask, Blueprint, render_template, request, redirect, url_for, session, flash
 from datetime import timedelta
 from flask_sqlalchemy import SQLAlchemy
+from cohere_api import test
 
 app = Flask(__name__)
 app.secret_key = "hello"
@@ -11,13 +12,13 @@ app.permanent_session_lifetime = timedelta(minutes=5)
 db = SQLAlchemy(app)
 
 class users(db.Model):
-    _id = db.Column("id", db.Integer, primary_key=True)
+    id = db.Column("id", db.Integer, primary_key=True)
     email = db.Column(db.String(100))
     password = db.Column(db.String(100))
-    images = db.relationship('Image', backref='user', lazy=True)
+    images = db.relationship('images', backref='user', lazy=True)
 
 
-class Image(db.Model):
+class images(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     image_base64 = db.Column(db.Text)
@@ -37,13 +38,30 @@ def home():
    
     if request.method == 'POST':
         array = []
-
+        user_email = session['email']
+        user = users.query.filter_by(email=user_email).first()
+        
         for type, id in request.form.items():
             array.append(id)
             print(array)
 
+        temp = test(array[1])
+        array.pop(1)
+        array.extend(temp)
+
+        new_image = images(
+            user_id=user.id,
+            image_base64=array[0],
+            caption=array[1],
+            latitude=array[2],
+            longitude=array[3]
+        )
+
+        db.session.add(new_image)
+        db.session.commit()
+
         flash("Image added successfully")
-        return render_template('index.html')
+        return redirect(url_for("home"))
 
 @app.route("/register", methods=["POST", "GET"])
 def register():
@@ -106,7 +124,7 @@ def logout():
 
 @app.route("/view")
 def view():
-    return render_template("view.html", values=users.query.all())
+    return render_template("view.html", users=users.query.all(), images=images.query.all())
 
 if __name__ == '__main__':
     with app.app_context():

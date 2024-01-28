@@ -6,9 +6,48 @@
     <title>Document</title>
 </head>
 <body>
-    <title>view all users</title>
-    {% for item in values %}
-        <p>Email: {{item.email}}, password: {{item.password}}</p>
-    {% endfor %}
+    <h1>User Data</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Password</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.password }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h1>Image Data</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>Image Base64</th>
+                <th>Caption</th>
+                <th>Longitude</th>
+                <th>Latitude</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for image in images %}
+            <tr>
+                <td>{{ image.user_id }}</td>
+                <td>{{ image.image_base64 }}</td>
+                <td>{{ image.caption }}</td>
+                <td>{{ image.longitude }}</td>
+                <td>{{ image.latitude }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>
