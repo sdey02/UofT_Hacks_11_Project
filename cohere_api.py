@@ -1,11 +1,20 @@
 import cohere
 from json import load
+import geopy
+from geopy.geocoders import Nominatim
+import requests
+import ssl
+import certifi
+import geopy.geocoders
+import sys
+import json
 
-co = cohere.Client(load(open("config.json", "r"))["token"])
+co = cohere.Client(load(open("keys/config.json", "r"))["token"]) #! Cohere API Key 
 
-user_input = "Hello I am in a random country today. We are going to figure otu what country i am in by the acitivites that I do throughout the day. I am in Brazil for some coffee this morning. I want to see the birds in Rio De Janeiro."
+user_input = "I am in Miami to drink tea. I like exploring florida." #TODO: Get input from array after max
 
-location = co.generate(
+#! Cohere model extracts location from user input.
+location = co.generate(   
   model='command',
   prompt=f'I am going to give you some text. I want you to output one line of information from it in the form "City, Country". {user_input}',
   max_tokens=300,
@@ -16,11 +25,10 @@ location = co.generate(
 
 location_data = format(location.generations[0].text)
 
-caption_user_input = "Hello I am in a random country today. We are going to figure otu what country i am in by the acitivites that I do throughout the day. I am in Brazil for some coffee this morning. I want to see the birds in Rio De Janeiro."
-
+#! Cohere model generates a caption for photo.
 caption = co.generate(
   model='command',
-  prompt=f'I am going to give you some text describing the events that took place in a photo. Using that text, output only a short, catchy caption for the photo inside double quotes.{caption_user_input}',
+  prompt=f'I am going to give you some text describing the events that took place in a photo. Using that text, output only a short, catchy caption for the photo inside double quotes.{user_input}',
   max_tokens=300,
   temperature=0.9,
   k=0,
@@ -29,4 +37,11 @@ caption = co.generate(
 
 caption_data = format(caption.generations[0].text)
 
-print(caption_data)
+#! Geopy longitude and lattitude conversion.
+ctx = ssl.create_default_context(cafile=certifi.where())
+geopy.geocoders.options.default_ssl_context = ctx
+
+geolocator = Nominatim(user_agent="my_request")
+location_geopy = geolocator.geocode(location_data)
+latitude = location_geopy.latitude
+longitude = location_geopy.longitude
