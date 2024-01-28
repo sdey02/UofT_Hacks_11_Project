@@ -8,12 +8,9 @@ import certifi
 import geopy.geocoders
 import sys
 import json
-from views.py import array
 
 
 co = cohere.Client(load(open("keys/config.json", "r"))["token"]) #! Cohere API Key 
-
-user_input = array[1] #TODO: Get input from array after max
 
 #! Cohere model extracts location from user input.
 location = co.generate(   
