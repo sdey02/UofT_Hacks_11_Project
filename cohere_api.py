@@ -8,10 +8,12 @@ import certifi
 import geopy.geocoders
 import sys
 import json
+from views.py import array
+
 
 co = cohere.Client(load(open("keys/config.json", "r"))["token"]) #! Cohere API Key 
 
-user_input = "I am in Miami to drink tea. I like exploring florida." #TODO: Get input from array after max
+user_input = array[1] #TODO: Get input from array after max
 
 #! Cohere model extracts location from user input.
 location = co.generate(   
@@ -45,3 +47,6 @@ geolocator = Nominatim(user_agent="my_request")
 location_geopy = geolocator.geocode(location_data)
 latitude = location_geopy.latitude
 longitude = location_geopy.longitude
+
+print(latitude)
+print(longitude)
