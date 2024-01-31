@@ -26,6 +26,8 @@
 
 This project is what we came up for the nostolgia theme at UofT Hacks 11. The project allows users to upload a photo along with a short paragraph about what they did at that location. The photo is converted to base 64. Then using Cohere we parse the text to find the location and also generate a simple caption for the photo. The location is then passed to geopy to get the latitude and longitude which get sent a SQLAlchemy database along with the the base64 image for storage. The location data is also passed to leaflet where we create a pointer on the map that contains the photo and the cpation that was generated for that location. We also use a relational database to store a users login details.  
 
+Contact details for the entire team, (Maxence, Hamza and me) can be found below.
+
 ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
 ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
 ![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
