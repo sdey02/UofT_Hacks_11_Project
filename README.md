@@ -24,29 +24,32 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This project is what we came up for the nostolgia theme at UofT Hacks 11. The project allows users to upload a photo along with a short paragraph about what they did at that location. The photo is converted to base 64 Then using Cohere we parse the text to find the location and also generate a simple caption for the photo. The location is then passed to geopy to get the latitude and longitude which get sent a SQLAlchemy along with the 
+This project is what we came up for the nostolgia theme at UofT Hacks 11. The project allows users to upload a photo along with a short paragraph about what they did at that location. The photo is converted to base 64. Then using Cohere we parse the text to find the location and also generate a simple caption for the photo. The location is then passed to geopy to get the latitude and longitude which get sent a SQLAlchemy database along with the the base64 image for storage. The location data is also passed to leaflet where we create a pointer on the map that contains the photo and the cpation that was generated for that location. We also use a relational database to store a users login details.  
 
+![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
+![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 <!-- GETTING STARTED -->
 ## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
-* SDL
+* Flask
+* Geopy
+* Cohere API
+* SQLAlchemy
+* ssl
+* certifi
   ```sh
-  git clone https://github.com/libsdl-org/SDL.git -b SDL2
-  cd SDL
-  mkdir build
-  cd build
-  ../configure
-  make
-  sudo make install
+  pip3 install cohere
+  pip3 install geopy
+  pip3 isntall flask
+  pip3 import ssl
+  pip3 import certifi
   ```
 
 ### Installation
@@ -55,15 +58,19 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    git clone https://github.com/sdey02/Chip_8_Emulator.git
    ```
+
+2. In app.py
+   ```sh
+   python3 app.py
+   ```
    
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Chip-8 emulator that lets you run Chip-8 roms for fun.
+Plotted Memories lets you uplaod an image along with text about where you were and what you did that day. It can be used as a photo album or as a way to track all the palces you have been to.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -86,19 +93,10 @@ Don't forget to give the project a star! Thanks again!
 <!-- CONTACT -->
 ## Contact
 
-Shreyans Dey - sdey@uwaterloo.ca
-
-Project Link: [https://github.com/sdey02/Chip_8_Emulator.git](https://github.com/sdey02/Chip_8_Emulator.git)
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-* [CHIP-8 General Information](https://en.wikipedia.org/wiki/CHIP-8)
-* [Guide to making a CHIP-8 Emulator](https://tobiasvl.github.io/blog/write-a-chip-8-emulator/)
+Maxence Gilloteaux - https://www.linkedin.com/in/maxenceglt/
+<br>
+Shreyans Dey - https://www.linkedin.com/in/sdey02/
+<br>
+Hamza Zadi - https://www.linkedin.com/in/hmzzaidi/
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
